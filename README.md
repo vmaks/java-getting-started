@@ -13,23 +13,18 @@ Make sure you have Java and Maven installed.  Also, install the [Heroku CLI](htt
 ```sh
 $ git clone https://github.com/heroku/java-getting-started.git
 $ cd java-getting-started
-$ mvn install
-$ heroku local:start
+$ mvn clean install
+$ docker-compose up -d
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-If you're going to use a database, ensure you have a local `.env` file that reads something like this:
-
-```
-JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/java_database_name
-```
+Your app should now be running on [localhost:8080](http://localhost:8080/).
 
 ## Deploying to Heroku
 
 ```sh
 $ heroku create
-$ git push heroku master
+$ heroku container:push web
+$ heroku container:release web
 $ heroku open
 ```
 
@@ -38,3 +33,5 @@ $ heroku open
 For more information about using Java on Heroku, see these Dev Center articles:
 
 - [Java on Heroku](https://devcenter.heroku.com/categories/java)
+
+- [Container Registry & Runtime (Docker Deploys)](https://devcenter.heroku.com/articles/container-registry-and-runtime)
